@@ -26,7 +26,7 @@
   h2 { font-size:21px; }
   h6 { font-size:17px; font-weight:700; }
   .cartao { border:1px solid #e0e4ee; border-radius:8px; padding:14px; margin:10px 0; }
-  .botao { display:inline-block; background:#c0392b; color:#fff; padding:9px 16px; border-radius:6px; cursor:pointer; font-weight:600; font-size:14px; }
+  .botao{ border:none; font-family:inherit; }
   table { border-collapse: collapse; width:100%; margin:14px 0; font-size:14px; }
   td { border:1px solid #d9dee9; padding:9px 11px; }
   .layout td { border:none; padding:0; vertical-align: top; }
@@ -75,7 +75,7 @@
     <p>
       Bem-vindo à nossa loja. Trabalhamos com <strong>as melhores marcas</strong> do mercado e oferecemos
       <em>garantia estendida</em> em todos os produtos. Nossa nova política de trocas entrou em vigor
-      neste mês. Para saber mais, <a href="politica.html">clique aqui</a>.
+      neste mês. Para saber mais, <a href="politica.html">Leia nossa nova política de trocas</a>.
     </p>
 
     <h2>Guitarras</h2>
@@ -83,7 +83,7 @@
     <p>
       Confira nossa linha completa de guitarras elétricas e acústicas. Todos os modelos passam por
       revisão técnica antes do envio. Veja o catálogo completo em PDF,
-      <a href="catalogo.pdf" target="_blank">clique aqui</a>.
+      <a href="catalogo.pdf" target="_blank">Baixe o catálogo completo em PDF (abre em nova aba)</a>.
     </p>
 
     <h3>Guitarras Elétricas</h3>
@@ -91,18 +91,18 @@
     <div class="cartao">
       <h4>Stratocaster HSS</h4><br>
       R$ 4.290,00<br>
-      <div class="botao" onclick="adicionarCarrinho(101)">Adicionar ao carrinho</div>
+      <button type="button" class="botao" onclick="adicionarCarrinho(101)">Adicionar ao carrinho</button>
     </div>
 
     <div class="cartao">
       <h4>Les Paul Standard</h4><br>
       R$ 7.150,00<br>
-      <div class="botao" onclick="adicionarCarrinho(102)">Adicionar ao carrinho</div>
+      <button type="button" class="botao" onclick="adicionarCarrinho(102)">Adicionar ao carrinho</button>
     </div>
 
     <h2>Baterias</h2>
 
-    <p>Kits acústicos e eletrônicos para estúdio e palco. <a href="baterias.html">Saiba mais</a>.</p>
+    <p>Kits acústicos e eletrônicos para estúdio e palco. <a href="baterias.html">Saiba mais sobre nossas baterias</a>.</p>.
 
     <h3>Bateria Eletrônica</h3>
 
@@ -184,7 +184,7 @@
         <input type="checkbox" name="int" id="i3"> Teclados
       </div>
 
-      <p><a href="#" onclick="enviarFormulario()" class="botao">Enviar</a></p>
+      <button type="submit" class="botao" onclick="enviarFormulario()">Enviar</button>
 
     </form>
 
@@ -192,9 +192,9 @@
 
   <aside class="lateral" aria-label="Conteúdo relacionado">
     <h2>Conteúdo relacionado</h2>
-    <a href="afinacao.html">Aqui</a> você aprende a afinar sua guitarra.<br><br>
-    <a href="manutencao.html">Saiba mais</a> sobre manutenção de instrumentos.<br><br>
-    <a href="blog.html" target="_blank">Clique aqui</a> para ler nosso blog.
+    <a href="afinacao.html">Aprenda a afinar sua guitarra</a>
+    <a href="manutencao.html">Saiba mais sobre manutenção de instrumentos</a>
+    <a href="blog.html" target="_blank">Leia nosso blog (abre em nova aba)</a>
   </aside>
 
 </div>
