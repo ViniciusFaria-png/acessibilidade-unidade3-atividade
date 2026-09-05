@@ -43,6 +43,12 @@
   #rodape { background:#1f2a44; color:#b9c4de; padding:20px 24px; font-size:13px; margin-top:10px; }
   #rodape a { color:#dbe2f2; }
   .aviso { background:#fff8e1; border:1px solid #f0dfa8; padding:12px 14px; border-radius:6px; font-size:14px; }
+  .sr-only{
+    position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+    overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+  }
+  fieldset{border:1px solid #c3c9d6; border-radius:5px; padding:12px 14px; margin-bottom:14px;}
+  legend{font-weight:600; padding:0 4px;}
 </style>
 </head>
 <body>
@@ -171,34 +177,41 @@
 
     <form action="/enviar" method="post">
 
-      <div style="font-weight:600; margin:14px 0 6px;">Nome completo *</div>
-      <input type="text" id="nome" placeholder="Digite seu nome completo">
+      <label for="nome">Nome completo <span aria-hidden="true">*</span><span class="sr-only"> (obrigatório)</span></label>
+      <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
 
-      <input type="email" id="email" placeholder="E-mail *">
-      <div class="erro">Erro.</div>
+      <label for="email">E-mail <span aria-hidden="true">*</span><span class="sr-only"> (obrigatório)</span></label>
+      <input type="email" id="email" name="email" required aria-describedby="erro-email">
+      <div class="erro" id="erro-email">E-mail inválido. Informe um endereço no formato nome@dominio.com.</div>
 
-      <label>Telefone</label>
-      <input type="text" id="telefone" placeholder="(00) 00000-0000">
+      <label for="telefone">Telefone</label>
+      <input type="text" id="telefone" name="telefone" placeholder="(00) 00000-0000">
 
-      <input type="password" id="senha" placeholder="Crie uma senha">
-      <div class="erro">Erro.</div>
+      <label for="senha">Senha</label>
+      <input type="password" id="senha" name="senha" placeholder="Crie uma senha" aria-describedby="erro-senha">
+      <div class="erro" id="erro-senha">Senha muito curta. Use ao menos 8 caracteres.</div>
 
-      <div style="font-weight:600; margin:14px 0 6px;">Turno preferido para contato *</div>
-      <div>
-        <input type="radio" name="turno" id="manha" value="manha"> Manhã<br>
-        <input type="radio" name="turno" id="tarde" value="tarde"> Tarde<br>
-        <input type="radio" name="turno" id="noite" value="noite"> Noite
-      </div>
+      <fieldset>
+        <legend>Turno preferido para contato <span aria-hidden="true">*</span><span class="sr-only"> (obrigatório)</span></legend>
+        <input type="radio" name="turno" id="manha" value="manha" required>
+        <label for="manha">Manhã</label><br>
+        <input type="radio" name="turno" id="tarde" value="tarde">
+        <label for="tarde">Tarde</label><br>
+        <input type="radio" name="turno" id="noite" value="noite">
+        <label for="noite">Noite</label>
+      </fieldset>
 
-      <div style="font-weight:600; margin:14px 0 6px;">Assuntos de interesse</div>
-      <div>
-        <input type="checkbox" name="int" id="i1"> Guitarras<br>
-        <input type="checkbox" name="int" id="i2"> Baterias<br>
-        <input type="checkbox" name="int" id="i3"> Teclados
-      </div>
+      <fieldset>
+        <legend>Assuntos de interesse</legend>
+        <input type="checkbox" name="int" id="i1" value="guitarras">
+        <label for="i1">Guitarras</label><br>
+        <input type="checkbox" name="int" id="i2" value="baterias">
+        <label for="i2">Baterias</label><br>
+        <input type="checkbox" name="int" id="i3" value="teclados">
+        <label for="i3">Teclados</label>
+      </fieldset>
 
-      <button type="submit" class="botao" onclick="enviarFormulario()">Enviar</button>
-
+      <p><button type="submit" class="botao" onclick="enviarFormulario()">Enviar</button></p>
     </form>
 
   </main>
