@@ -15,12 +15,19 @@
   #menu { background:#2c3a5e; padding:10px 24px; }
   #menu span a { color:#fff; text-decoration:none; margin-right:20px; font-size:15px; display:inline-block; padding:4px 0; }
   #menu span a:hover { text-decoration:underline; }
+  #menu ul{list-style:none;margin:0;padding:0;display:flex;}
+  #menu li{margin-right:20px;}
+  #menu a{color:#fff;text-decoration:none;font-size:15px;display:inline-block;padding:4px 0;}
   #trilha { padding:10px 24px; font-size:13px; color:#5b6478; background:#eef0f5; }
   #trilha a { color:#5b6478; }
+  #trilha ol{list-style:none;display:flex;gap:6px;padding:0;margin:0;}
+  #trilha li:not(:last-child)::after{content:"›";margin-left:6px;color:#5b6478;}
   #miolo { display:flex; gap:28px; padding:24px; align-items:flex-start; }
   #conteudo { flex:1 1 auto; min-width:0; }
   .lateral { flex:0 0 250px; background:#f2f4f9; border:1px solid #e0e4ee; padding:16px; border-radius:8px; font-size:14px; }
   .h1-falso { font-size:28px; font-weight:800; margin:0 0 6px; }
+  .lista-categorias{list-style:none;padding:0;margin:0;}
+  .lista-produtos{list-style:none;padding:0;margin:0;}
   h3, h2, h6 { margin: 26px 0 10px; }
   h3 { font-size:21px; }
   h2 { font-size:21px; }
@@ -54,15 +61,21 @@
   </header>
 
   <nav id="menu" aria-label="Menu Principal">
-    <span><a href="index.html">Início</a></span>
-    <span><a href="guitarras.html">Guitarras</a></span>
-    <span><a href="baterias.html">Baterias</a></span>
-    <span><a href="teclados.html">Teclados</a></span>
-    <span><a href="contato.html">Contato</a></span>
+    <ul>
+      <li><a href="index.html">Início</a></li>
+      <li><a href="guitarras.html">Guitarras</a></li>
+      <li><a href="baterias.html">Baterias</a></li>
+      <li><a href="teclados.html">Teclados</a></li>
+      <li><a href="contato.html">Contato</a></li>
+    </ul>
   </nav>
 
   <nav id="trilha" aria-label="Trilha de navegação">
-    <a href="index.html">Início</a> &gt; <a href="guitarras.html">Guitarras</a> &gt; Guitarras Elétricas
+    <ol>
+      <li><a href="index.html">Início</a></li>
+      <li><a href="guitarras.html">Guitarras</a></li>
+      <li aria-current="page">Guitarras Elétricas</li>
+    </ol>
   </nav>
 
 
@@ -87,18 +100,18 @@
     </p>
 
     <h3>Guitarras Elétricas</h3>
-
-    <div class="cartao">
-      <h4>Stratocaster HSS</h4><br>
-      R$ 4.290,00<br>
-      <button type="button" class="botao" onclick="adicionarCarrinho(101)">Adicionar ao carrinho</button>
-    </div>
-
-    <div class="cartao">
-      <h4>Les Paul Standard</h4><br>
-      R$ 7.150,00<br>
-      <button type="button" class="botao" onclick="adicionarCarrinho(102)">Adicionar ao carrinho</button>
-    </div>
+    <ul class="lista-produtos">
+      <li class="cartao">
+        <h4>Stratocaster HSS</h4>
+        <p>R$ 4.290,00</p>
+        <button type="button" class="botao" onclick="adicionarCarrinho(101)">Adicionar ao carrinho</button>
+      </li>
+      <li class="cartao">
+        <h4>Les Paul Standard</h4>
+        <p>R$ 7.150,00</p>
+        <button type="button" class="botao" onclick="adicionarCarrinho(102)">Adicionar ao carrinho</button>
+      </li>
+    </ul>
 
     <h2>Baterias</h2>
 
@@ -110,13 +123,13 @@
 
     <h2>Categorias em destaque</h2>
 
-    <div class="lista-falsa">
-      Guitarras e Baixos<br>
-      Baterias e Percussão<br>
-      Teclados e Sintetizadores<br>
-      Microfones<br>
-      Acessórios<br>
-    </div>
+    <ul class="lista-categorias">
+      <li>Guitarras e Baixos</li>
+      <li>Baterias e Percussão</li>
+      <li>Teclados e Sintetizadores</li>
+      <li>Microfones</li>
+      <li>Acessórios</li>
+    </ul>
 
     <h2>Comparativo de modelos</h2>
 
@@ -192,9 +205,11 @@
 
   <aside class="lateral" aria-label="Conteúdo relacionado">
     <h2>Conteúdo relacionado</h2>
-    <a href="afinacao.html">Aprenda a afinar sua guitarra</a>
-    <a href="manutencao.html">Saiba mais sobre manutenção de instrumentos</a>
-    <a href="blog.html" target="_blank">Leia nosso blog (abre em nova aba)</a>
+    <ul>
+      <li><a href="afinacao.html">Aprenda a afinar sua guitarra</a></li>
+      <li><a href="manutencao.html">Saiba mais sobre manutenção de instrumentos</a></li>
+      <li><a href="blog.html" target="_blank">Leia nosso blog (abre em nova aba)</a></li>
+    </ul>
   </aside>
 
 </div>
