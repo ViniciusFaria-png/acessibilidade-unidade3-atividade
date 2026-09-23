@@ -5,38 +5,160 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Harmonia Instrumentos Musicais</title>
 <style>
+  :root {
+    --bg-page: #f6f6f8;
+    --bg-wrap: #ffffff;
+    --bg-topo: #1f2a44;
+    --bg-menu: #2c3a5e;
+    --bg-trilha: #eef0f5;
+    --bg-card: #ffffff;
+    --bg-lateral: #f2f4f9;
+    --bg-th: #eef0f5;
+    --bg-aviso: #fff8e1;
+    --border-aviso: #f0dfa8;
+    
+    --text-main: #1c1c1e;
+    --text-muted: #535d70;
+    --text-inverse: #ffffff;
+    --text-subtitulo: #b9c4de;
+    --text-link: #1558b0;
+    --text-link-hover: #0d3870;
+    --text-link-footer: #dbe2f2;
+    
+    --border-color: #d9dee9;
+    --border-field: #8a94a6;
+    
+    --btn-primary: #c0392b;
+    --btn-primary-hover: #962d22;
+    --erro-color: #c0392b;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg-page: #121214;
+      --bg-wrap: #1a1b20;
+      --bg-topo: #10141f;
+      --bg-menu: #182033;
+      --bg-trilha: #242731;
+      --bg-card: #242731;
+      --bg-lateral: #242731;
+      --bg-th: #2c303d;
+      --bg-aviso: #2c2510;
+      --border-aviso: #66541b;
+      
+      --text-main: #f0f2f5;
+      --text-muted: #a6b0c2;
+      --text-inverse: #ffffff;
+      --text-subtitulo: #cbd5e1;
+      --text-link: #7cb3ff;
+      --text-link-hover: #a8ccff;
+      --text-link-footer: #cbd5e1;
+      
+      --border-color: #383d4a;
+      --border-field: #616a7d;
+      
+      --btn-primary: #d32f2f;
+      --btn-primary-hover: #b71c1c;
+      --erro-color: #ff6b6b;
+    }
+  }
+
+  [data-theme="dark"] {
+    --bg-page: #121214;
+    --bg-wrap: #1a1b20;
+    --bg-topo: #10141f;
+    --bg-menu: #182033;
+    --bg-trilha: #242731;
+    --bg-card: #242731;
+    --bg-lateral: #242731;
+    --bg-th: #2c303d;
+    --bg-aviso: #2c2510;
+    --border-aviso: #66541b;
+    
+    --text-main: #f0f2f5;
+    --text-muted: #a6b0c2;
+    --text-inverse: #ffffff;
+    --text-subtitulo: #cbd5e1;
+    --text-link: #7cb3ff;
+    --text-link-hover: #a8ccff;
+    --text-link-footer: #cbd5e1;
+    
+    --border-color: #383d4a;
+    --border-field: #616a7d;
+    
+    --btn-primary: #d32f2f;
+    --btn-primary-hover: #b71c1c;
+    --erro-color: #ff6b6b;
+  }
+
+  [data-theme="light"] {
+    --bg-page: #f6f6f8;
+    --bg-wrap: #ffffff;
+    --bg-topo: #1f2a44;
+    --bg-menu: #2c3a5e;
+    --bg-trilha: #eef0f5;
+    --bg-card: #ffffff;
+    --bg-lateral: #f2f4f9;
+    --bg-th: #eef0f5;
+    --bg-aviso: #fff8e1;
+    --border-aviso: #f0dfa8;
+    
+    --text-main: #1c1c1e;
+    --text-muted: #535d70;
+    --text-inverse: #ffffff;
+    --text-subtitulo: #b9c4de;
+    --text-link: #1558b0;
+    --text-link-hover: #0d3870;
+    --text-link-footer: #dbe2f2;
+    
+    --border-color: #d9dee9;
+    --border-field: #8a94a6;
+    
+    --btn-primary: #c0392b;
+    --btn-primary-hover: #962d22;
+    --erro-color: #c0392b;
+  }
+
   * { box-sizing: border-box; }
-  body { margin:0; font-family: system-ui, "Segoe UI", Arial, sans-serif; color:#1c1c1e; background:#f6f6f8; line-height:1.55; }
-  .wrap { max-width: 1040px; margin: 0 auto; background:#fff; }
-  #topo { background:#1f2a44; color:#fff; padding:18px 24px; }
-  .topo-flex{display:flex;justify-content:space-between;align-items:center;}
+  body {
+    margin: 0;
+    font-family: system-ui, "Segoe UI", Arial, sans-serif;
+    color: var(--text-main);
+    background: var(--bg-page);
+    line-height: 1.55;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  .wrap { max-width: 1040px; margin: 0 auto; background: var(--bg-wrap); }
+  #topo { background: var(--bg-topo); color: var(--text-inverse); padding:18px 24px; }
+  .topo-flex { display:flex; justify-content:space-between; align-items:center; }
   .titulo-principal { font-size: 30px; font-weight: 800; letter-spacing:-.5px; }
-  .subtitulo { color:#b9c4de; font-size:14px; }
-  #menu { background:#2c3a5e; padding:10px 24px; }
-  #menu span a { color:#fff; text-decoration:none; margin-right:20px; font-size:15px; display:inline-block; padding:4px 0; }
+  .subtitulo { color: var(--text-subtitulo); font-size:14px; }
+  #menu { background: var(--bg-menu); padding:10px 24px; }
+  #menu span a { color: var(--text-inverse); text-decoration:none; margin-right:20px; font-size:15px; display:inline-block; padding:4px 0; }
   #menu span a:hover { text-decoration:underline; }
-  #menu ul{list-style:none;margin:0;padding:0;display:flex;}
-  #menu li{margin-right:20px;}
-  #menu a{color:#fff;text-decoration:none;font-size:15px;display:inline-block;padding:4px 0;}
-  #trilha { padding:10px 24px; font-size:13px; color:#5b6478; background:#eef0f5; }
-  #trilha a { color:#5b6478; }
-  #trilha ol{list-style:none;display:flex;gap:6px;padding:0;margin:0;}
-  #trilha li:not(:last-child)::after{content:"›";margin-left:6px;color:#5b6478;}
+  #menu ul { list-style:none; margin:0; padding:0; display:flex; }
+  #menu li { margin-right:20px; }
+  #menu a { color: var(--text-inverse); text-decoration:none; font-size:15px; display:inline-block; padding:4px 0; }
+  #menu a:hover, #menu a:focus { text-decoration:underline; }
+  #trilha { padding:10px 24px; font-size:13px; color: var(--text-muted); background: var(--bg-trilha); }
+  #trilha a { color: var(--text-link); }
+  #trilha ol { list-style:none; display:flex; gap:6px; padding:0; margin:0; }
+  #trilha li:not(:last-child)::after { content:"›"; margin-left:6px; color: var(--text-muted); }
   #miolo { display:flex; gap:28px; padding:24px; align-items:flex-start; }
   #conteudo { flex:1 1 auto; min-width:0; }
-  .lateral { flex:0 0 250px; background:#f2f4f9; border:1px solid #e0e4ee; padding:16px; border-radius:8px; font-size:14px; }
+  .lateral { flex:0 0 250px; background: var(--bg-lateral); border:1px solid var(--border-color); padding:16px; border-radius:8px; font-size:14px; }
   .h1-falso { font-size:28px; font-weight:800; margin:0 0 6px; }
-  .lista-categorias{list-style:none;padding:0;margin:0;}
-  .lista-produtos{list-style:none;padding:0;margin:0;}
+  .lista-categorias { list-style:none; padding:0; margin:0; }
+  .lista-produtos { list-style:none; padding:0; margin:0; }
   h3, h2, h6 { margin: 26px 0 10px; }
   h3 { font-size:21px; }
   h2 { font-size:21px; }
   h6 { font-size:17px; font-weight:700; }
-  .cartao { border:1px solid #e0e4ee; border-radius:8px; padding:14px; margin:10px 0; }
+  .cartao { background: var(--bg-card); border:1px solid var(--border-color); border-radius:8px; padding:14px; margin:10px 0; }
   .botao {
     display:inline-block;
-    background:#c0392b;
-    color:#fff;
+    background: var(--btn-primary);
+    color: var(--text-inverse);
     padding:9px 16px;
     border-radius:6px;
     cursor:pointer;
@@ -45,16 +167,33 @@
     border:none;
     font-family:inherit;
   }
+  .botao:hover { background: var(--btn-primary-hover); }
+  .botao:focus { outline: 3px solid #ffbf47; outline-offset: 2px; }
   table { border-collapse: collapse; width:100%; margin:14px 0; font-size:14px; }
-  td { border:1px solid #d9dee9; padding:9px 11px; }
+  td { border:1px solid var(--border-color); padding:9px 11px; }
   .layout td { border:none; padding:0; vertical-align: top; }
-  th { background:#eef0f5; font-weight:700; text-align:left; }
-  input[type=text], input[type=email], input[type=password] { width:100%; padding:9px; border:1px solid #c3c9d6; border-radius:5px; margin-bottom:12px; font-size:14px; }
-  .erro { color:#c0392b; font-size:13px; margin:-6px 0 12px; }
-  #rodape { background:#1f2a44; color:#b9c4de; padding:20px 24px; font-size:13px; margin-top:10px; }
-  #rodape a { color:#dbe2f2; }
-  .aviso { background:#fff8e1; border:1px solid #f0dfa8; padding:12px 14px; border-radius:6px; font-size:14px; }
-  .sr-only{
+  th { background: var(--bg-th); color: var(--text-main); font-weight:700; text-align:left; border:1px solid var(--border-color); }
+  input[type=text], input[type=email], input[type=password] {
+    width:100%;
+    padding:9px;
+    background: var(--bg-wrap);
+    color: var(--text-main);
+    border:1px solid var(--border-field);
+    border-radius:5px;
+    margin-bottom:12px;
+    font-size:14px;
+  }
+  input[type=text]:focus, input[type=email]:focus, input[type=password]:focus {
+    outline: 2px solid var(--text-link);
+    border-color: var(--text-link);
+  }
+  .erro { color: var(--erro-color); font-size:13px; margin:-6px 0 12px; }
+  #rodape { background: var(--bg-topo); color: var(--text-subtitulo); padding:20px 24px; font-size:13px; margin-top:10px; }
+  #rodape a { color: var(--text-link-footer); }
+  .aviso { background: var(--bg-aviso); border:1px solid var(--border-aviso); padding:12px 14px; border-radius:6px; font-size:14px; color: var(--text-main); }
+  a { color: var(--text-link); }
+  a:hover { color: var(--text-link-hover); }
+  .sr-only {
     position:absolute; width:1px; height:1px; padding:0; margin:-1px;
     overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
   }
@@ -62,14 +201,14 @@
     position: absolute;
     top: 10px;
     left: -9999px;
-    background: #1f2a44;
-    color: #ffffff;
+    background: var(--bg-topo);
+    color: var(--text-inverse);
     padding: 12px 18px;
     text-decoration: none;
     font-weight: 700;
     font-size: 14px;
     border-radius: 4px;
-    border: 2px solid #ffffff;
+    border: 2px solid var(--text-inverse);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     z-index: 9999;
   }
@@ -78,8 +217,28 @@
     outline: 3px solid #ffbf47;
     outline-offset: 2px;
   }
-  fieldset{border:1px solid #c3c9d6; border-radius:5px; padding:12px 14px; margin-bottom:14px;}
-  legend{font-weight:600; padding:0 4px;}
+  .btn-tema {
+    background: transparent;
+    color: var(--text-inverse);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: inherit;
+    line-height: 1.4;
+  }
+  .btn-tema:hover {
+    border-color: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.08);
+  }
+  .btn-tema:focus-visible {
+    outline: 2px solid #ffbf47;
+    outline-offset: 2px;
+  }
+  fieldset { border:1px solid var(--border-field); border-radius:5px; padding:12px 14px; margin-bottom:14px; }
+  legend { font-weight:600; padding:0 4px; }
 </style>
 </head>
 <body>
@@ -91,9 +250,12 @@
           <div class="titulo-principal">Harmonia Instrumentos Musicais</div>
           <div class="subtitulo">Tudo para o seu som desde 1998</div>
         </div>
-        <a href="carrinho.html" aria-label="Ver carrinho de compras">
-          <img src="..." width="34" height="34" alt="">
-        </a>
+        <div style="display:flex;align-items:center;gap:16px;">
+          <button id="btn-tema" type="button" class="btn-tema">Modo escuro</button>
+          <a href="carrinho.html" aria-label="Ver carrinho de compras">
+            <img src="..." width="34" height="34" alt="">
+          </a>
+        </div>
     </div>
   </header>
 
@@ -266,5 +428,56 @@
 
 </div>
 
+<script>
+  (function() {
+    const btnTema = document.getElementById('btn-tema');
+    const raizHtml = document.documentElement;
+    const mediaDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+    function obterTemaEfetivo() {
+      const temaSalvo = localStorage.getItem('tema-preferido');
+      if (temaSalvo === 'dark' || temaSalvo === 'light') return temaSalvo;
+      return mediaDark.matches ? 'dark' : 'light';
+    }
+
+    function atualizarBotao(tema) {
+      btnTema.textContent = tema === 'dark' ? 'Modo claro' : 'Modo escuro';
+    }
+
+    function aplicarTema(tema, salvar = false) {
+      if (salvar) {
+        raizHtml.setAttribute('data-theme', tema);
+        localStorage.setItem('tema-preferido', tema);
+      } else {
+        const temaSalvo = localStorage.getItem('tema-preferido');
+        if (temaSalvo) {
+          raizHtml.setAttribute('data-theme', temaSalvo);
+        } else {
+          raizHtml.removeAttribute('data-theme');
+        }
+      }
+      atualizarBotao(obterTemaEfetivo());
+    }
+
+    const temaInicial = obterTemaEfetivo();
+    const temaSalvo = localStorage.getItem('tema-preferido');
+    if (temaSalvo) {
+      raizHtml.setAttribute('data-theme', temaSalvo);
+    }
+    atualizarBotao(temaInicial);
+
+    btnTema.addEventListener('click', function() {
+      const temaAtual = obterTemaEfetivo();
+      const novoTema = temaAtual === 'dark' ? 'light' : 'dark';
+      aplicarTema(novoTema, true);
+    });
+
+    mediaDark.addEventListener('change', function(e) {
+      if (!localStorage.getItem('tema-preferido')) {
+        atualizarBotao(e.matches ? 'dark' : 'light');
+      }
+    });
+  })();
+</script>
 </body>
 </html>
