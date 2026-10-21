@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cadastro e Contato — Harmonia Instrumentos Musicais</title>
+<style>
+  :root {
+    --bg-page: #f6f6f8;
+    --bg-wrap: #ffffff;
+    --bg-topo: #1f2a44;
+    --bg-menu: #2c3a5e;
+    --bg-trilha: #eef0f5;
+    --bg-card: #ffffff;
+    --bg-lateral: #f2f4f9;
+    --bg-th: #eef0f5;
+    --bg-aviso: #fff8e1;
+    --border-aviso: #f0dfa8;
+    --bg-erro-box: #fdf2f2;
+    --border-erro-box: #c0392b;
+    --bg-sucesso-box: #edf7ed;
+    --border-sucesso-box: #1e7e34;
+    --text-sucesso: #155724;
+
+    --text-main: #1c1c1e;
+    --text-muted: #535d70;
+    --text-inverse: #ffffff;
+    --text-subtitulo: #b9c4de;
+    --text-link: #1558b0;
+    --text-link-hover: #0d3870;
+    --text-link-footer: #dbe2f2;
+
+    --border-color: #d9dee9;
+    --border-field: #6c7689;
+
+    --btn-primary: #c0392b;
+    --btn-primary-hover: #962d22;
+    --erro-color: #b32417;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg-page: #121214;
+      --bg-wrap: #1a1b20;
+      --bg-topo: #10141f;
+      --bg-menu: #182033;
+      --bg-trilha: #242731;
+      --bg-card: #242731;
+      --bg-lateral: #242731;
+      --bg-th: #2c303d;
+      --bg-aviso: #2c2510;
+      --border-aviso: #66541b;
+      --bg-erro-box: #2d1618;
+      --border-erro-box: #ff6b6b;
+      --bg-sucesso-box: #132a19;
+      --border-sucesso-box: #5dd879;
+      --text-sucesso: #a3f0b5;
+
+      --text-main: #f0f2f5;
+      --text-muted: #a6b0c2;
+      --text-inverse: #ffffff;
+      --text-subtitulo: #cbd5e1;
+      --text-link: #7cb3ff;
+      --text-link-hover: #a8ccff;
+      --text-link-footer: #cbd5e1;
+
+      --border-color: #383d4a;
+      --border-field: #788296;
+
+      --btn-primary: #d32f2f;
+      --btn-primary-hover: #b71c1c;
+      --erro-color: #ff8080;
+    }
+  }
+
+  [data-theme="dark"] {
+    --bg-page: #121214;
+    --bg-wrap: #1a1b20;
+    --bg-topo: #10141f;
+    --bg-menu: #182033;
+    --bg-trilha: #242731;
+    --bg-card: #242731;
+    --bg-lateral: #242731;
+    --bg-th: #2c303d;
+    --bg-aviso: #2c2510;
+    --border-aviso: #66541b;
+    --bg-erro-box: #2d1618;
+    --border-erro-box: #ff6b6b;
+    --bg-sucesso-box: #132a19;
+    --border-sucesso-box: #5dd879;
+    --text-sucesso: #a3f0b5;
+
+    --text-main: #f0f2f5;
+    --text-muted: #a6b0c2;
+    --text-inverse: #ffffff;
+    --text-subtitulo: #cbd5e1;
+    --text-link: #7cb3ff;
+    --text-link-hover: #a8ccff;
+    --text-link-footer: #cbd5e1;
+
+    --border-color: #383d4a;
+    --border-field: #788296;
+
+    --btn-primary: #d32f2f;
+    --btn-primary-hover: #b71c1c;
+    --erro-color: #ff8080;
+  }
+
+  [data-theme="light"] {
+    --bg-page: #f6f6f8;
+    --bg-wrap: #ffffff;
+    --bg-topo: #1f2a44;
+    --bg-menu: #2c3a5e;
+    --bg-trilha: #eef0f5;
+    --bg-card: #ffffff;
+    --bg-lateral: #f2f4f9;
+    --bg-th: #eef0f5;
+    --bg-aviso: #fff8e1;
+    --border-aviso: #f0dfa8;
+    --bg-erro-box: #fdf2f2;
+    --border-erro-box: #c0392b;
+    --bg-sucesso-box: #edf7ed;
+    --border-sucesso-box: #1e7e34;
+    --text-sucesso: #155724;
+
+    --text-main: #1c1c1e;
+    --text-muted: #535d70;
+    --text-inverse: #ffffff;
+    --text-subtitulo: #b9c4de;
+    --text-link: #1558b0;
+    --text-link-hover: #0d3870;
+    --text-link-footer: #dbe2f2;
+
+    --border-color: #d9dee9;
+    --border-field: #6c7689;
+
+    --btn-primary: #c0392b;
+    --btn-primary-hover: #962d22;
+    --erro-color: #b32417;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, "Segoe UI", Arial, sans-serif;
+    color: var(--text-main);
+    background: var(--bg-page);
+    line-height: 1.55;
+  }
+  .wrap { max-width: 1040px; margin: 0 auto; background: var(--bg-wrap); }
+  #topo { background: var(--bg-topo); color: var(--text-inverse); padding: 18px 24px; }
+  .topo-flex { display: flex; justify-content: space-between; align-items: center; }
+  .topo-acoes { display: flex; align-items: center; gap: 16px; }
+  .titulo-principal { font-size: 30px; font-weight: 800; letter-spacing: -.5px; }
+  .subtitulo { color: var(--text-subtitulo); font-size: 14px; }
+  #menu { background: var(--bg-menu); padding: 10px 24px; }
+  #menu ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; }
+  #menu li { margin-right: 20px; }
+  #menu a { color: var(--text-inverse); text-decoration: none; font-size: 15px; display: inline-block; padding: 4px 0; }
+  #menu a:hover, #menu a:focus { text-decoration: underline; }
+  #menu a[aria-current="page"] { font-weight: 700; text-decoration: underline; }
+  #trilha { padding: 10px 24px; font-size: 13px; color: var(--text-muted); background: var(--bg-trilha); }
+  #trilha a { color: var(--text-link); }
+  #trilha ol { list-style: none; display: flex; gap: 6px; padding: 0; margin: 0; }
+  #trilha li:not(:last-child)::after { content: "›"; margin-left: 6px; color: var(--text-muted); }
+  #miolo { display: flex; gap: 28px; padding: 24px; align-items: flex-start; }
+  #conteudo { flex: 1 1 auto; min-width: 0; outline: none; }
+  .lateral { flex: 0 0 250px; background: var(--bg-lateral); border: 1px solid var(--border-color); padding: 16px; border-radius: 8px; font-size: 14px; }
+  h1 { margin: 0 0 12px; font-size: 28px; }
+  h2 { margin: 20px 0 10px; font-size: 21px; }
+
+  .botao {
+    display: inline-block;
+    background: var(--btn-primary);
+    color: var(--text-inverse);
+    padding: 11px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 15px;
+    border: none;
+    font-family: inherit;
+  }
+  .botao:hover { background: var(--btn-primary-hover); }
+  .botao:focus, .botao:focus-visible { outline: 3px solid #ffbf47; outline-offset: 2px; }
+
+  fieldset {
+    border: 1px solid var(--border-field);
+    border-radius: 6px;
+    padding: 16px 18px;
+    margin: 0 0 20px;
+  }
+  legend {
+    font-weight: 700;
+    font-size: 16px;
+    padding: 0 6px;
+  }
+  .campo-grupo {
+    margin-bottom: 16px;
+  }
+  .campo-grupo:last-child {
+    margin-bottom: 0;
+  }
+  label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 4px;
+    font-size: 14px;
+  }
+  .opcao-linha {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .opcao-linha label {
+    display: inline;
+    font-weight: 400;
+    margin-bottom: 0;
+    cursor: pointer;
+  }
+  .opcao-linha input[type="radio"],
+  .opcao-linha input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    cursor: pointer;
+  }
+  .opcao-linha input[type="radio"]:focus-visible,
+  .opcao-linha input[type="checkbox"]:focus-visible {
+    outline: 3px solid #ffbf47;
+    outline-offset: 2px;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="tel"],
+  input[type="date"],
+  select {
+    width: 100%;
+    padding: 9px 11px;
+    background: var(--bg-wrap);
+    color: var(--text-main);
+    border: 1px solid var(--border-field);
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: inherit;
+  }
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="password"]:focus,
+  input[type="tel"]:focus,
+  input[type="date"]:focus,
+  select:focus {
+    outline: 2px solid var(--text-link);
+    border-color: var(--text-link);
+  }
+  input[aria-invalid="true"],
+  select[aria-invalid="true"] {
+    border: 2px solid var(--erro-color);
+  }
+  fieldset[aria-invalid="true"] {
+    border: 2px solid var(--erro-color);
+  }
+  .instrucao {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin: 2px 0 6px;
+  }
+  .requisitos-lista {
+    margin: 4px 0 8px 18px;
+    padding: 0;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .obrigatorio {
+    color: var(--erro-color);
+    font-weight: 700;
+  }
+  .erro {
+    color: var(--erro-color);
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 5px;
+  }
+  .resumo-erros {
+    background: var(--bg-erro-box);
+    border: 2px solid var(--border-erro-box);
+    border-radius: 6px;
+    padding: 16px;
+    margin-bottom: 20px;
+    color: var(--text-main);
+  }
+  .resumo-erros:focus {
+    outline: 3px solid #ffbf47;
+    outline-offset: 2px;
+  }
+  .resumo-erros h2 {
+    margin: 0 0 8px;
+    font-size: 18px;
+    color: var(--erro-color);
+  }
+  .resumo-erros p {
+    margin: 0 0 8px;
+    font-size: 14px;
+  }
+  .resumo-erros ul {
+    margin: 0;
+    padding-left: 20px;
+  }
+  .resumo-erros li {
+    margin-bottom: 6px;
+  }
+  .resumo-erros a {
+    color: var(--erro-color);
+    font-weight: 600;
+    text-decoration: underline;
+  }
+  .resumo-erros a:hover,
+  .resumo-erros a:focus {
+    color: var(--text-main);
+  }
+  .mensagem-sucesso {
+    background: var(--bg-sucesso-box);
+    border: 2px solid var(--border-sucesso-box);
+    color: var(--text-sucesso);
+    border-radius: 6px;
+    padding: 16px;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  .mensagem-sucesso:focus {
+    outline: 3px solid #ffbf47;
+    outline-offset: 2px;
+  }
+  .honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+  #rodape { background: var(--bg-topo); color: var(--text-subtitulo); padding: 20px 24px; font-size: 13px; margin-top: 10px; }
+  #rodape a { color: var(--text-link-footer); }
+  .aviso { background: var(--bg-aviso); border: 1px solid var(--border-aviso); padding: 12px 14px; border-radius: 6px; font-size: 14px; color: var(--text-main); margin-bottom: 20px; }
+  a { color: var(--text-link); }
+  a:hover { color: var(--text-link-hover); }
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+  .skip-link {
+    position: absolute;
+    top: 10px;
+    left: -9999px;
+    background: var(--bg-topo);
+    color: var(--text-inverse);
+    padding: 12px 18px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 2px solid var(--text-inverse);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+  }
+  .skip-link:focus {
+    left: 16px;
+    outline: 3px solid #ffbf47;
+    outline-offset: 2px;
+  }
+  .btn-tema {
+    background: transparent;
+    color: var(--text-inverse);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: inherit;
+    line-height: 1.4;
+  }
+  .btn-tema:hover {
+    border-color: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.08);
+  }
+  .btn-tema:focus-visible {
+    outline: 2px solid #ffbf47;
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+</style>
+</head>
+<body>
+<a href="#conteudo" class="skip-link">Pular para o conteúdo principal</a>
+<div class="wrap">
+  <header id="topo">
+    <div class="topo-flex">
+      <div>
+        <div class="titulo-principal">Harmonia Instrumentos Musicais</div>
+        <div class="subtitulo">Tudo para o seu som desde 1998</div>
+      </div>
+      <div class="topo-acoes">
+        <button id="btn-tema" type="button" class="btn-tema">Modo escuro</button>
+        <a href="carrinho.html" aria-label="Ver carrinho de compras">
+          <img src="..." width="34" height="34" alt="">
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <nav id="menu" aria-label="Menu Principal">
+    <ul>
+      <li><a href="index.html">Início</a></li>
+      <li><a href="guitarras.html">Guitarras</a></li>
+      <li><a href="baterias.html">Baterias</a></li>
+      <li><a href="teclados.html">Teclados</a></li>
+      <li><a href="contato.html" aria-current="page">Contato</a></li>
+    </ul>
+  </nav>
+
+  <nav id="trilha" aria-label="Trilha de navegação">
+    <ol>
+      <li><a href="index.html">Início</a></li>
+      <li aria-current="page">Contato e Cadastro</li>
+    </ol>
+  </nav>
+
+  <div id="miolo">
+    <main id="conteudo" tabindex="-1">
+      <h1>Cadastro de Cliente e Contato</h1>
+
+      <p>
+        Crie seu cadastro na Harmonia Instrumentos Musicais para receber atendimento especializado,
+        acompanhar pedidos e conferir ofertas nos seus instrumentos favoritos.
+      </p>
+
+      <div class="aviso">
+        Os campos marcados com <span class="obrigatorio" aria-hidden="true">*</span> são obrigatórios.
+      </div>
+
+      <div id="resumo-erros" class="resumo-erros" role="alert" aria-labelledby="titulo-resumo-erros" tabindex="-1" hidden>
+        <h2 id="titulo-resumo-erros">Não foi possível enviar o formulário</h2>
+        <p id="texto-resumo-erros">Corrija os erros abaixo para continuar:</p>
+        <ul id="lista-resumo-erros"></ul>
+      </div>
+
+      <div id="mensagem-sucesso" class="mensagem-sucesso" role="status" aria-live="polite" tabindex="-1" hidden>
+        Cadastro realizado com sucesso! Todos os dados foram validados e enviados.
+      </div>
+
+      <form id="form-cadastro" action="/enviar" method="post" novalidate>
+        <fieldset>
+          <legend>Dados pessoais</legend>
+
+          <div class="campo-grupo">
+            <label for="nome">
+              Nome completo <span class="obrigatorio" aria-hidden="true">*</span><span class="sr-only"> (obrigatório)</span>
+            </label>
+            <div class="instrucao" id="dica-nome">Informe seu nome e sobrenome (mínimo de 3 caracteres).</div>
+            <input type="text" id="nome" name="nome" autocomplete="name" required aria-required="true" aria-describedby="dica-nome">
+            <div class="erro" id="erro-nome" hidden></div>
+          </div>
+
+          <div class="campo-grupo">
+            <label for="email">
+              E-mail <span class="obrigatorio" aria-hidden="true">*</span><span class="sr-only"> (obrigatório)</span>
+            </label>
+            <div class="instrucao" id="dica-email">Formato esperado: seuemail@dominio.com.</div>
+            <input type="email" id="email" name="email" autocomplete="email" required aria-required="true" aria-describedby="dica-email">
+            <div class="erro" id="erro-email" hidden></div>
+          </div>
+
+          <div class="campo-grupo">
+            <label for="cpf">
+              CPF <span class="obrigatorio" aria-hidden="true">*</span><span class="sr-only"> (obrigatório)</span>
+            </label>
+            <div class="instrucao" id="dica-cpf">Formato: 000.000.000-00 (11 dígitos numéricos).</div>
+            <input type="text" id="cpf" name="cpf" inputmode="numeric" required aria-required="true" aria-describedby="dica-cpf">
+            <div class="erro" id="erro-cpf" hidden></div>
+          </div>
+
+          <div class="campo-grupo">
+            <label for="nascimento">
+              Data de nascimento <span class="obrigatorio" aria-hidden="true">*</span><span class="sr-only"> (obrigatório)</span>
+            </label>
+            <div class="instrucao" id="dica-nascimento">Selecione ou digite sua data de nascimento (formato DD/MM/AAAA).</div>
+            <input type="date" id="nascimento" name="nascimento" autocomplete="bday" required aria-required="true" aria-describedby="dica-nascimento">
+            <div class="erro" id="erro-nascimento" hidden></div>
+          </div>
+
+          <div class="campo-grupo">
+            <label for="telefone">Telefone (opcional)</label>
+            <div class="instrucao" id="dica-telefone">Formato com DDD: (00) 00000-0000 ou (00) 0000-0000.</div>
+            <input type="tel" id="telefone" name="telefone" autocomplete="tel" aria-describedby="dica-telefone">
+            <div class="erro" id="erro-telefone" hidden></div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Segurança de acesso</legend>
+
+          <div class="campo-grupo">
+            <label for="senha">
+              Senha <span class="obrigatorio" aria-hidden="true">*</span><span class="sr-only"> (obrigatório)</span>
+            </label>
+            <div id="dica-senha">
+              <div class="instrucao">A senha deve atender aos seguintes requisitos:</div>
+              <ul class="requisitos-lista">
+                <li>Mínimo de 8 caracteres;</li>
+                <li>Pelo menos uma letra maiúscula e uma minúscula;</li>
+                <li>Pelo menos um número.</li>
+              </ul>
+            </div>
+            <input type="password" id="senha" name="senha" autocomplete="new-password" required aria-required="true" aria-describedby="dica-senha">
+            <div class="erro" id="erro-senha" hidden></div>
+          </div>
+
+          <div class="campo-grupo">
+            <label for="confirmar-senha">
+              Confirmação de senha <span class="obrigatorio" aria-hidden="true">*</span><span class="sr-only"> (obrigatório)</span>
+            </label>
+            <div class="instrucao" id="dica-confirmar-senha">Repita exatamente a mesma senha informada no campo anterior.</div>
+            <input type="password" id="confirmar-senha" name="confirmar-senha" autocomplete="new-password" required aria-required="true" aria-describedby="dica-confirmar-senha">
+            <div class="erro" id="erro-confirmar-senha" hidden></div>
+          </div>
+        </fieldset>
+
+        <fieldset id="grupo-genero" aria-describedby="dica-genero">
+          <legend>
+            Gênero <span class="obrigatorio" aria-hidden="true">*</span><span class="sr-only"> (obrigatório)</span>
+          </legend>
+          <div class="instrucao" id="dica-genero">Selecione uma das opções abaixo.</div>
+
+          <div class="opcao-linha">
+            <input type="radio" id="genero-feminino" name="genero" value="feminino" required>
+            <label for="genero-feminino">Feminino</label>
+          </div>
+          <div class="opcao-linha">
+            <input type="radio" id="genero-masculino" name="genero" value="masculino">
+            <label for="genero-masculino">Masculino</label>
+          </div>
+          <div class="opcao-linha">
+            <input type="radio" id="genero-nao-binario" name="genero" value="nao-binario">
+            <label for="genero-nao-binario">Não binário</label>
+          </div>
+          <div class="opcao-linha">
+            <input type="radio" id="genero-nao-informar" name="genero" value="prefiro-nao-informar">
+            <label for="genero-nao-informar">Prefiro não informar</label>
+          </div>
+          <div class="erro" id="erro-genero" hidden></div>
+        </fieldset>
+
+        <fieldset id="grupo-interesses" aria-describedby="dica-interesses">
+          <legend>
+            Interesses musicais <span class="obrigatorio" aria-hidden="true">*</span><span class="sr-only"> (obrigatório)</span>
+          </legend>
+          <div class="instrucao" id="dica-interesses">Selecione pelo menos uma categoria de interesse.</div>
+
+          <div class="opcao-linha">
+            <input type="checkbox" id="interesse-guitarras" name="interesses" value="guitarras">
+            <label for="interesse-guitarras">Guitarras e Baixos</label>
+          </div>
+          <div class="opcao-linha">
+            <input type="checkbox" id="interesse-baterias" name="interesses" value="baterias">
+            <label for="interesse-baterias">Baterias e Percussão</label>
+          </div>
+          <div class="opcao-linha">
+            <input type="checkbox" id="interesse-teclados" name="interesses" value="teclados">
+            <label for="interesse-teclados">Teclados e Pianos</label>
+          </div>
+          <div class="opcao-linha">
+            <input type="checkbox" id="interesse-audio" name="interesses" value="audio">
+            <label for="interesse-audio">Áudio e Microfones</label>
+          </div>
+          <div class="opcao-linha">
+            <input type="checkbox" id="interesse-acessorios" name="interesses" value="acessorios">
+            <label for="interesse-acessorios">Acessórios e Manutenção</label>
+          </div>
+          <div class="erro" id="erro-interesses" hidden></div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Origem e termos de uso</legend>
+
+          <div class="campo-grupo">
+            <label for="como-conheceu">
+              Como conheceu o site <span class="obrigatorio" aria-hidden="true">*</span><span class="sr-only"> (obrigatório)</span>
+            </label>
+            <div class="instrucao" id="dica-como-conheceu">Escolha na lista como você chegou até nossa loja.</div>
+            <select id="como-conheceu" name="como-conheceu" required aria-required="true" aria-describedby="dica-como-conheceu">
+              <option value="">Selecione uma opção</option>
+              <option value="busca">Site de busca (Google, Bing)</option>
+              <option value="redes-sociais">Redes sociais (Instagram, YouTube)</option>
+              <option value="indicacao">Indicação de amigos ou músicos</option>
+              <option value="anuncio">Anúncio online</option>
+              <option value="outro">Outro meio</option>
+            </select>
+            <div class="erro" id="erro-como-conheceu" hidden></div>
+          </div>
+
+          <div class="campo-grupo">
+            <div class="instrucao" id="dica-termos">É necessário aceitar os termos de uso e privacidade para concluir o cadastro.</div>
+            <div class="opcao-linha">
+              <input type="checkbox" id="termos" name="termos" value="aceito" required aria-required="true" aria-describedby="dica-termos">
+              <label for="termos">
+                Li e aceito os <a href="termos.html">Termos de uso</a> e a <a href="privacidade.html">Política de privacidade</a>
+                <span class="obrigatorio" aria-hidden="true">*</span><span class="sr-only"> (obrigatório)</span>
+              </label>
+            </div>
+            <div class="erro" id="erro-termos" hidden></div>
+          </div>
+        </fieldset>
+
+        <div class="honeypot">
+          <label for="website-honeypot">Não preencha este campo (verificação anti-spam)</label>
+          <input type="text" id="website-honeypot" name="website_honeypot" tabindex="-1" autocomplete="off">
+        </div>
+
+        <p>
+          <button type="submit" class="botao">Concluir cadastro</button>
+        </p>
+      </form>
+    </main>
+
+    <aside class="lateral" aria-label="Conteúdo relacionado">
+      <h2>Atendimento</h2>
+      <p>Precisa de ajuda para preencher seu cadastro? Nosso suporte atende de segunda a sexta, das 9h às 18h.</p>
+      <ul>
+        <li><a href="afinacao.html">Aprenda a afinar sua guitarra</a></li>
+        <li><a href="manutencao.html">Saiba mais sobre manutenção de instrumentos</a></li>
+        <li><a href="blog.html" target="_blank">Leia nosso blog (abre em nova aba)</a></li>
+      </ul>
+    </aside>
+  </div>
+
+  <footer id="rodape">
+    Harmonia Instrumentos Musicais &bull; CNPJ 00.000.000/0001-00 &bull;
+    <a href="termos.html">Termos de uso</a> &bull;
+    <a href="privacidade.html">Privacidade</a>
+  </footer>
+</div>
+
+<script>
+  (function() {
+    const btnTema = document.getElementById('btn-tema');
+    const raizHtml = document.documentElement;
+    const mediaDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+    function obterTemaEfetivo() {
+      const temaSalvo = localStorage.getItem('tema-preferido');
+      if (temaSalvo === 'dark' || temaSalvo === 'light') return temaSalvo;
+      return mediaDark.matches ? 'dark' : 'light';
+    }
+
+    function atualizarBotao(tema) {
+      btnTema.textContent = tema === 'dark' ? 'Modo claro' : 'Modo escuro';
+    }
+
+    function aplicarTema(tema, salvar = false) {
+      if (salvar) {
+        raizHtml.setAttribute('data-theme', tema);
+        localStorage.setItem('tema-preferido', tema);
+      } else {
+        const temaSalvo = localStorage.getItem('tema-preferido');
+        if (temaSalvo) {
+          raizHtml.setAttribute('data-theme', temaSalvo);
+        } else {
+          raizHtml.removeAttribute('data-theme');
+        }
+      }
+      atualizarBotao(obterTemaEfetivo());
+    }
+
+    const temaInicial = obterTemaEfetivo();
+    const temaSalvo = localStorage.getItem('tema-preferido');
+    if (temaSalvo) {
+      raizHtml.setAttribute('data-theme', temaSalvo);
+    }
+    atualizarBotao(temaInicial);
+
+    btnTema.addEventListener('click', function() {
+      const temaAtual = obterTemaEfetivo();
+      const novoTema = temaAtual === 'dark' ? 'light' : 'dark';
+      aplicarTema(novoTema, true);
+    });
+
+    mediaDark.addEventListener('change', function(e) {
+      if (!localStorage.getItem('tema-preferido')) {
+        atualizarBotao(e.matches ? 'dark' : 'light');
+      }
+    });
+  })();
+
+  (function() {
+    const form = document.getElementById('form-cadastro');
+    const resumoErros = document.getElementById('resumo-erros');
+    const listaResumoErros = document.getElementById('lista-resumo-erros');
+    const textoResumoErros = document.getElementById('texto-resumo-erros');
+    const mensagemSucesso = document.getElementById('mensagem-sucesso');
+    const honeypot = document.getElementById('website-honeypot');
+
+    let tentativaEnvioRealizada = false;
+
+    function validarCPF(valor) {
+      const limpo = valor.replace(/\D/g, '');
+      if (limpo.length !== 11) return false;
+      if (/^(\d)\1{10}$/.test(limpo)) return false;
+
+      let soma = 0;
+      for (let i = 0; i < 9; i++) {
+        soma += parseInt(limpo.charAt(i), 10) * (10 - i);
+      }
+      let resto = (soma * 10) % 11;
+      if (resto === 10) resto = 0;
+      if (resto !== parseInt(limpo.charAt(9), 10)) return false;
+
+      soma = 0;
+      for (let i = 0; i < 10; i++) {
+        soma += parseInt(limpo.charAt(i), 10) * (11 - i);
+      }
+      resto = (soma * 10) % 11;
+      if (resto === 10) resto = 0;
+      return resto === parseInt(limpo.charAt(10), 10);
+    }
+
+    const definicoesCampos = [
+      {
+        chave: 'nome',
+        rotulo: 'Nome completo',
+        elemento: document.getElementById('nome'),
+        alvoAncoraId: 'nome',
+        dicaId: 'dica-nome',
+        erroId: 'erro-nome',
+        validar: function() {
+          const val = document.getElementById('nome').value.trim();
+          if (!val) return 'Informe seu nome completo.';
+          if (val.length < 3 || !val.includes(' ')) {
+            return 'Informe seu nome e sobrenome completos.';
+          }
+          return '';
+        }
+      },
+      {
+        chave: 'email',
+        rotulo: 'E-mail',
+        elemento: document.getElementById('email'),
+        alvoAncoraId: 'email',
+        dicaId: 'dica-email',
+        erroId: 'erro-email',
+        validar: function() {
+          const val = document.getElementById('email').value.trim();
+          if (!val) return 'Informe seu endereço de e-mail.';
+          const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!regexEmail.test(val)) {
+            return 'E-mail inválido. Use o formato seuemail@dominio.com.';
+          }
+          return '';
+        }
+      },
+      {
+        chave: 'cpf',
+        rotulo: 'CPF',
+        elemento: document.getElementById('cpf'),
+        alvoAncoraId: 'cpf',
+        dicaId: 'dica-cpf',
+        erroId: 'erro-cpf',
+        validar: function() {
+          const val = document.getElementById('cpf').value.trim();
+          if (!val) return 'Informe seu CPF.';
+          const formatoAceito = /^(\d{11}|\d{3}\.\d{3}\.\d{3}-\d{2})$/;
+          if (!formatoAceito.test(val)) {
+            return 'Formato de CPF inválido. Digite no formato 000.000.000-00 ou 11 números.';
+          }
+          if (!validarCPF(val)) {
+            return 'CPF inválido. Verifique os dígitos informados.';
+          }
+          return '';
+        }
+      },
+      {
+        chave: 'nascimento',
+        rotulo: 'Data de nascimento',
+        elemento: document.getElementById('nascimento'),
+        alvoAncoraId: 'nascimento',
+        dicaId: 'dica-nascimento',
+        erroId: 'erro-nascimento',
+        validar: function() {
+          const val = document.getElementById('nascimento').value;
+          if (!val) return 'Informe sua data de nascimento.';
+          const dataNasc = new Date(val + 'T00:00:00');
+          const hoje = new Date();
+          if (isNaN(dataNasc.getTime()) || dataNasc > hoje) {
+            return 'Informe uma data de nascimento válida no passado.';
+          }
+          const anoMinimo = 1900;
+          if (dataNasc.getFullYear() < anoMinimo) {
+            return 'Informe um ano de nascimento a partir de 1900.';
+          }
+          return '';
+        }
+      },
+      {
+        chave: 'telefone',
+        rotulo: 'Telefone',
+        elemento: document.getElementById('telefone'),
+        alvoAncoraId: 'telefone',
+        dicaId: 'dica-telefone',
+        erroId: 'erro-telefone',
+        validar: function() {
+          const val = document.getElementById('telefone').value.trim();
+          if (!val) return '';
+          const regexTel = /^(\(\d{2}\)\s?\d{4,5}-?\d{4}|\d{10,11})$/;
+          if (!regexTel.test(val)) {
+            return 'Telefone inválido. Informe com DDD no formato (00) 00000-0000.';
+          }
+          return '';
+        }
+      },
+      {
+        chave: 'senha',
+        rotulo: 'Senha',
+        elemento: document.getElementById('senha'),
+        alvoAncoraId: 'senha',
+        dicaId: 'dica-senha',
+        erroId: 'erro-senha',
+        validar: function() {
+          const val = document.getElementById('senha').value;
+          if (!val) return 'Crie uma senha para sua conta.';
+          if (val.length < 8) {
+            return 'A senha deve ter no mínimo 8 caracteres.';
+          }
+          if (!/[A-Z]/.test(val) || !/[a-z]/.test(val) || !/\d/.test(val)) {
+            return 'A senha deve conter pelo menos uma letra maiúscula, uma minúscula e um número.';
+          }
+          return '';
+        }
+      },
+      {
+        chave: 'confirmar-senha',
+        rotulo: 'Confirmação de senha',
+        elemento: document.getElementById('confirmar-senha'),
+        alvoAncoraId: 'confirmar-senha',
+        dicaId: 'dica-confirmar-senha',
+        erroId: 'erro-confirmar-senha',
+        validar: function() {
+          const val = document.getElementById('confirmar-senha').value;
+          const senha = document.getElementById('senha').value;
+          if (!val) return 'Confirme sua senha.';
+          if (val !== senha) {
+            return 'A confirmação de senha não coincide com a senha digitada.';
+          }
+          return '';
+        }
+      },
+      {
+        chave: 'genero',
+        rotulo: 'Gênero',
+        elemento: document.getElementById('grupo-genero'),
+        alvoAncoraId: 'genero-feminino',
+        dicaId: 'dica-genero',
+        erroId: 'erro-genero',
+        ehGrupo: true,
+        seletorInputs: 'input[name="genero"]',
+        validar: function() {
+          const selecionado = document.querySelector('input[name="genero"]:checked');
+          if (!selecionado) return 'Selecione uma opção de gênero.';
+          return '';
+        }
+      },
+      {
+        chave: 'interesses',
+        rotulo: 'Interesses musicais',
+        elemento: document.getElementById('grupo-interesses'),
+        alvoAncoraId: 'interesse-guitarras',
+        dicaId: 'dica-interesses',
+        erroId: 'erro-interesses',
+        ehGrupo: true,
+        seletorInputs: 'input[name="interesses"]',
+        validar: function() {
+          const marcados = document.querySelectorAll('input[name="interesses"]:checked');
+          if (marcados.length === 0) {
+            return 'Selecione pelo menos um interesse musical.';
+          }
+          return '';
+        }
+      },
+      {
+        chave: 'como-conheceu',
+        rotulo: 'Como conheceu o site',
+        elemento: document.getElementById('como-conheceu'),
+        alvoAncoraId: 'como-conheceu',
+        dicaId: 'dica-como-conheceu',
+        erroId: 'erro-como-conheceu',
+        validar: function() {
+          const val = document.getElementById('como-conheceu').value;
+          if (!val) return 'Selecione como você conheceu o site.';
+          return '';
+        }
+      },
+      {
+        chave: 'termos',
+        rotulo: 'Aceite dos termos',
+        elemento: document.getElementById('termos'),
+        alvoAncoraId: 'termos',
+        dicaId: 'dica-termos',
+        erroId: 'erro-termos',
+        validar: function() {
+          const marcado = document.getElementById('termos').checked;
+          if (!marcado) {
+            return 'Você precisa aceitar os termos de uso e privacidade para continuar.';
+          }
+          return '';
+        }
+      }
+    ];
+
+    function atualizarEstadoCampo(def, mensagemErro) {
+      const elErro = document.getElementById(def.erroId);
+      const temErro = Boolean(mensagemErro);
+
+      if (temErro) {
+        elErro.textContent = mensagemErro;
+        elErro.hidden = false;
+        def.elemento.setAttribute('aria-invalid', 'true');
+        def.elemento.setAttribute('aria-describedby', def.dicaId + ' ' + def.erroId);
+        if (def.ehGrupo) {
+          document.querySelectorAll(def.seletorInputs).forEach(function(inp) {
+            inp.setAttribute('aria-invalid', 'true');
+            inp.setAttribute('aria-describedby', def.erroId);
+          });
+        }
+      } else {
+        elErro.textContent = '';
+        elErro.hidden = true;
+        def.elemento.removeAttribute('aria-invalid');
+        def.elemento.setAttribute('aria-describedby', def.dicaId);
+        if (def.ehGrupo) {
+          document.querySelectorAll(def.seletorInputs).forEach(function(inp) {
+            inp.removeAttribute('aria-invalid');
+            inp.removeAttribute('aria-describedby');
+          });
+        }
+      }
+      return !temErro;
+    }
+
+    function atualizarResumoErros(focarResumo) {
+      if (!tentativaEnvioRealizada) return;
+
+      const errosAtuais = [];
+      definicoesCampos.forEach(function(def) {
+        const elErro = document.getElementById(def.erroId);
+        if (!elErro.hidden && elErro.textContent) {
+          errosAtuais.push({
+            rotulo: def.rotulo,
+            mensagem: elErro.textContent,
+            alvoId: def.alvoAncoraId
+          });
+        }
+      });
+
+      listaResumoErros.innerHTML = '';
+
+      if (errosAtuais.length > 0) {
+        textoResumoErros.textContent =
+          errosAtuais.length === 1
+            ? 'Foi encontrado 1 erro no formulário. Use o link abaixo para ir diretamente ao campo:'
+            : 'Foram encontrados ' + errosAtuais.length + ' erros no formulário. Use os links abaixo para ir diretamente a cada campo:';
+
+        errosAtuais.forEach(function(item) {
+          const li = document.createElement('li');
+          const link = document.createElement('a');
+          link.href = '#' + item.alvoId;
+          link.textContent = item.rotulo + ': ' + item.mensagem;
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const alvo = document.getElementById(item.alvoId);
+            if (alvo) {
+              alvo.focus();
+              alvo.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+          });
+          li.appendChild(link);
+          listaResumoErros.appendChild(li);
+        });
+
+        resumoErros.hidden = false;
+        if (focarResumo) {
+          resumoErros.focus();
+        }
+      } else {
+        resumoErros.hidden = true;
+      }
+    }
+
+    definicoesCampos.forEach(function(def) {
+      if (def.ehGrupo) {
+        const inputs = document.querySelectorAll(def.seletorInputs);
+        inputs.forEach(function(inp) {
+          inp.addEventListener('change', function() {
+            const msg = def.validar();
+            atualizarEstadoCampo(def, msg);
+            atualizarResumoErros(false);
+          });
+          inp.addEventListener('blur', function(e) {
+            setTimeout(function() {
+              if (!def.elemento.contains(document.activeElement)) {
+                const msg = def.validar();
+                atualizarEstadoCampo(def, msg);
+                atualizarResumoErros(false);
+              }
+            }, 10);
+          });
+        });
+      } else {
+        def.elemento.addEventListener('blur', function() {
+          const msg = def.validar();
+          atualizarEstadoCampo(def, msg);
+          if (def.chave === 'senha') {
+            const defConfirmar = definicoesCampos.find(function(d) { return d.chave === 'confirmar-senha'; });
+            if (defConfirmar && defConfirmar.elemento.value) {
+              atualizarEstadoCampo(defConfirmar, defConfirmar.validar());
+            }
+          }
+          atualizarResumoErros(false);
+        });
+
+        const eventoTempoReal = def.elemento.tagName === 'SELECT' || def.elemento.type === 'checkbox' ? 'change' : 'input';
+        def.elemento.addEventListener(eventoTempoReal, function() {
+          const elErro = document.getElementById(def.erroId);
+          if (!elErro.hidden || tentativaEnvioRealizada) {
+            const msg = def.validar();
+            atualizarEstadoCampo(def, msg);
+            atualizarResumoErros(false);
+          }
+          if (def.chave === 'senha') {
+            const defConfirmar = definicoesCampos.find(function(d) { return d.chave === 'confirmar-senha'; });
+            const erroConfirmar = document.getElementById(defConfirmar.erroId);
+            if (!erroConfirmar.hidden && defConfirmar.elemento.value) {
+              atualizarEstadoCampo(defConfirmar, defConfirmar.validar());
+              atualizarResumoErros(false);
+            }
+          }
+        });
+      }
+    });
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      mensagemSucesso.hidden = true;
+
+      if (honeypot && honeypot.value.trim() !== '') {
+        return;
+      }
+
+      tentativaEnvioRealizada = true;
+      let formularioValido = true;
+
+      definicoesCampos.forEach(function(def) {
+        const msg = def.validar();
+        const valido = atualizarEstadoCampo(def, msg);
+        if (!valido) {
+          formularioValido = false;
+        }
+      });
+
+      if (!formularioValido) {
+        atualizarResumoErros(true);
+      } else {
+        resumoErros.hidden = true;
+        mensagemSucesso.hidden = false;
+        mensagemSucesso.focus();
+        form.reset();
+        tentativaEnvioRealizada = false;
+        definicoesCampos.forEach(function(def) {
+          atualizarEstadoCampo(def, '');
+        });
+      }
+    });
+  })();
+</script>
+</body>
+</html>
