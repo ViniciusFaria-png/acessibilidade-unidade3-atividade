@@ -475,46 +475,10 @@
 
     <h2>Fale com um vendedor</h2>
 
-    <div class="aviso">Os campos marcados com <span style="color:#c0392b">*</span> são obrigatórios.</div>
-
-    <form action="/enviar" method="post">
-
-      <label for="nome">Nome completo <span aria-hidden="true">*</span><span class="sr-only"> (obrigatório)</span></label>
-      <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
-
-      <label for="email">E-mail <span aria-hidden="true">*</span><span class="sr-only"> (obrigatório)</span></label>
-      <input type="email" id="email" name="email" required aria-describedby="erro-email">
-      <div class="erro" id="erro-email">E-mail inválido. Informe um endereço no formato nome@dominio.com.</div>
-
-      <label for="telefone">Telefone</label>
-      <input type="text" id="telefone" name="telefone" placeholder="(00) 00000-0000">
-
-      <label for="senha">Senha</label>
-      <input type="password" id="senha" name="senha" placeholder="Crie uma senha" aria-describedby="erro-senha">
-      <div class="erro" id="erro-senha">Senha muito curta. Use ao menos 8 caracteres.</div>
-
-      <fieldset>
-        <legend>Turno preferido para contato <span aria-hidden="true">*</span><span class="sr-only"> (obrigatório)</span></legend>
-        <input type="radio" name="turno" id="manha" value="manha" required>
-        <label for="manha">Manhã</label><br>
-        <input type="radio" name="turno" id="tarde" value="tarde">
-        <label for="tarde">Tarde</label><br>
-        <input type="radio" name="turno" id="noite" value="noite">
-        <label for="noite">Noite</label>
-      </fieldset>
-
-      <fieldset>
-        <legend>Assuntos de interesse</legend>
-        <input type="checkbox" name="int" id="i1" value="guitarras">
-        <label for="i1">Guitarras</label><br>
-        <input type="checkbox" name="int" id="i2" value="baterias">
-        <label for="i2">Baterias</label><br>
-        <input type="checkbox" name="int" id="i3" value="teclados">
-        <label for="i3">Teclados</label>
-      </fieldset>
-
-      <p><button type="submit" class="botao" onclick="enviarFormulario()">Enviar</button></p>
-    </form>
+    <p>
+      Quer criar sua conta, receber ofertas personalizadas ou falar com nossa equipe?
+      <a href="contato.html">Acesse nossa página de contato e cadastro</a>.
+    </p>
 
   </main>
 
