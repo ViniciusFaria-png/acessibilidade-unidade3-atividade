@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cadastro e Contato — Harmonia Instrumentos Musicais</title>
+<link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+<a href="#conteudo" class="skip-link">Pular para o conteúdo principal</a>
+<div class="wrap">
+  <header id="topo">
+    <div class="topo-flex">
+      <div>
+        <div class="titulo-principal">Harmonia Instrumentos Musicais</div>
+        <div class="subtitulo">Tudo para o seu som desde 1998</div>
+      </div>
+      <div class="topo-acoes">
+        <button id="btn-tema" type="button" class="btn-tema">Modo escuro</button>
+        <a href="../carrinho.html" aria-label="Ver carrinho de compras">
+          <img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Ccircle%20cx%3D%229%22%20cy%3D%2220%22%20r%3D%221.4%22%2F%3E%3Ccircle%20cx%3D%2218%22%20cy%3D%2220%22%20r%3D%221.4%22%2F%3E%3Cpath%20d%3D%22M1.5%202h3l2.7%2012.4a2%202%200%200%200%202%201.6h8.1a2%202%200%200%200%202-1.6L21%206H6%22%2F%3E%3C%2Fsvg%3E" width="34" height="34" alt="">
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <nav id="menu" aria-label="Menu Principal">
+    <ul>
+      <li><a href="../index.html">Início</a></li>
+      <li><a href="../guitarras.html">Guitarras</a></li>
+      <li><a href="../baterias.html">Baterias</a></li>
+      <li><a href="../teclados.html">Teclados</a></li>
+      <li><a href="contato.html" aria-current="page">Contato</a></li>
+    </ul>
+  </nav>
+
+  <nav id="trilha" aria-label="Trilha de navegação">
+    <ol>
+      <li><a href="../index.html">Início</a></li>
+      <li aria-current="page">Contato e Cadastro</li>
+    </ol>
+  </nav>
+
+  <div id="miolo">
+    <main id="conteudo" tabindex="-1">
+      <h1>Cadastro de Cliente e Contato</h1>
+
+      <p>
+        Crie seu cadastro na Harmonia Instrumentos Musicais para receber atendimento especializado,
+        acompanhar pedidos e conferir ofertas nos seus instrumentos favoritos.
+      </p>
+
+      <div class="aviso">
+        Os campos marcados com <span class="obrigatorio" aria-hidden="true">*</span> são obrigatórios.
+      </div>
+
+      <div id="resumo-erros" class="resumo-erros" role="alert" aria-labelledby="titulo-resumo-erros" tabindex="-1" hidden>
+        <h2 id="titulo-resumo-erros">Não foi possível enviar o formulário</h2>
+        <p id="texto-resumo-erros">Corrija os erros abaixo para continuar:</p>
+        <ul id="lista-resumo-erros"></ul>
+      </div>
+
+      <div id="mensagem-sucesso" class="mensagem-sucesso" role="status" aria-live="polite" tabindex="-1" hidden>
+        Cadastro realizado com sucesso! Todos os dados foram validados e enviados.
+      </div>
+
+      <form id="form-cadastro" action="/enviar" method="post" novalidate>
+        <fieldset>
+          <legend>Dados pessoais</legend>
+
+          <div class="campo-grupo">
+            <label for="nome">
+              Nome completo <span class="obrigatorio" aria-hidden="true">*</span><span class="sr-only"> (obrigatório)</span>
+            </label>
+            <div class="instrucao" id="dica-nome">Informe seu nome e sobrenome (mínimo de 3 caracteres).</div>
+            <input type="text" id="nome" name="nome" autocomplete="name" required aria-required="true" aria-describedby="dica-nome">
+            <div class="erro" id="erro-nome" hidden></div>
+          </div>
+
+          <div class="campo-grupo">
+            <label for="email">
+              E-mail <span class="obrigatorio" aria-hidden="true">*</span><span class="sr-only"> (obrigatório)</span>
+            </label>
+            <div class="instrucao" id="dica-email">Formato esperado: seuemail@dominio.com.</div>
+            <input type="email" id="email" name="email" autocomplete="email" required aria-required="true" aria-describedby="dica-email">
+            <div class="erro" id="erro-email" hidden></div>
+          </div>
+
+          <div class="campo-grupo">
+            <label for="cpf">
+              CPF <span class="obrigatorio" aria-hidden="true">*</span><span class="sr-only"> (obrigatório)</span>
+            </label>
+            <div class="instrucao" id="dica-cpf">Formato: 000.000.000-00 (11 dígitos numéricos).</div>
+            <input type="text" id="cpf" name="cpf" inputmode="numeric" required aria-required="true" aria-describedby="dica-cpf">
+            <div class="erro" id="erro-cpf" hidden></div>
+          </div>
+
+          <div class="campo-grupo">
+            <label for="nascimento">
+              Data de nascimento <span class="obrigatorio" aria-hidden="true">*</span><span class="sr-only"> (obrigatório)</span>
+            </label>
+            <div class="instrucao" id="dica-nascimento">Selecione ou digite sua data de nascimento (formato DD/MM/AAAA).</div>
+            <input type="date" id="nascimento" name="nascimento" autocomplete="bday" required aria-required="true" aria-describedby="dica-nascimento">
+            <div class="erro" id="erro-nascimento" hidden></div>
+          </div>
+
+          <div class="campo-grupo">
+            <label for="telefone">Telefone (opcional)</label>
+            <div class="instrucao" id="dica-telefone">Formato com DDD: (00) 00000-0000 ou (00) 0000-0000.</div>
+            <input type="tel" id="telefone" name="telefone" autocomplete="tel" aria-describedby="dica-telefone">
+            <div class="erro" id="erro-telefone" hidden></div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Segurança de acesso</legend>
+
+          <div class="campo-grupo">
+            <label for="senha">
+              Senha <span class="obrigatorio" aria-hidden="true">*</span><span class="sr-only"> (obrigatório)</span>
+            </label>
+            <div id="dica-senha">
+              <div class="instrucao">A senha deve atender aos seguintes requisitos:</div>
+              <ul class="requisitos-lista">
+                <li>Mínimo de 8 caracteres;</li>
+                <li>Pelo menos uma letra maiúscula e uma minúscula;</li>
+                <li>Pelo menos um número.</li>
+              </ul>
+            </div>
+            <input type="password" id="senha" name="senha" autocomplete="new-password" required aria-required="true" aria-describedby="dica-senha">
+            <div class="erro" id="erro-senha" hidden></div>
+          </div>
+
+          <div class="campo-grupo">
+            <label for="confirmar-senha">
+              Confirmação de senha <span class="obrigatorio" aria-hidden="true">*</span><span class="sr-only"> (obrigatório)</span>
+            </label>
+            <div class="instrucao" id="dica-confirmar-senha">Repita exatamente a mesma senha informada no campo anterior.</div>
+            <input type="password" id="confirmar-senha" name="confirmar-senha" autocomplete="new-password" required aria-required="true" aria-describedby="dica-confirmar-senha">
+            <div class="erro" id="erro-confirmar-senha" hidden></div>
+          </div>
+        </fieldset>
+
+        <fieldset id="grupo-genero" aria-describedby="dica-genero">
+          <legend>
+            Gênero <span class="obrigatorio" aria-hidden="true">*</span><span class="sr-only"> (obrigatório)</span>
+          </legend>
+          <div class="instrucao" id="dica-genero">Selecione uma das opções abaixo.</div>
+
+          <div class="opcao-linha">
+            <input type="radio" id="genero-feminino" name="genero" value="feminino" required>
+            <label for="genero-feminino">Feminino</label>
+          </div>
+          <div class="opcao-linha">
+            <input type="radio" id="genero-masculino" name="genero" value="masculino">
+            <label for="genero-masculino">Masculino</label>
+          </div>
+          <div class="opcao-linha">
+            <input type="radio" id="genero-nao-binario" name="genero" value="nao-binario">
+            <label for="genero-nao-binario">Não binário</label>
+          </div>
+          <div class="opcao-linha">
+            <input type="radio" id="genero-nao-informar" name="genero" value="prefiro-nao-informar">
+            <label for="genero-nao-informar">Prefiro não informar</label>
+          </div>
+          <div class="erro" id="erro-genero" hidden></div>
+        </fieldset>
+
+        <fieldset id="grupo-interesses" aria-describedby="dica-interesses">
+          <legend>
+            Interesses musicais <span class="obrigatorio" aria-hidden="true">*</span><span class="sr-only"> (obrigatório)</span>
+          </legend>
+          <div class="instrucao" id="dica-interesses">Selecione pelo menos uma categoria de interesse.</div>
+
+          <div class="opcao-linha">
+            <input type="checkbox" id="interesse-guitarras" name="interesses" value="guitarras">
+            <label for="interesse-guitarras">Guitarras e Baixos</label>
+          </div>
+          <div class="opcao-linha">
+            <input type="checkbox" id="interesse-baterias" name="interesses" value="baterias">
+            <label for="interesse-baterias">Baterias e Percussão</label>
+          </div>
+          <div class="opcao-linha">
+            <input type="checkbox" id="interesse-teclados" name="interesses" value="teclados">
+            <label for="interesse-teclados">Teclados e Pianos</label>
+          </div>
+          <div class="opcao-linha">
+            <input type="checkbox" id="interesse-audio" name="interesses" value="audio">
+            <label for="interesse-audio">Áudio e Microfones</label>
+          </div>
+          <div class="opcao-linha">
+            <input type="checkbox" id="interesse-acessorios" name="interesses" value="acessorios">
+            <label for="interesse-acessorios">Acessórios e Manutenção</label>
+          </div>
+          <div class="erro" id="erro-interesses" hidden></div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Origem e termos de uso</legend>
+
+          <div class="campo-grupo">
+            <label for="como-conheceu">
+              Como conheceu o site <span class="obrigatorio" aria-hidden="true">*</span><span class="sr-only"> (obrigatório)</span>
+            </label>
+            <div class="instrucao" id="dica-como-conheceu">Escolha na lista como você chegou até nossa loja.</div>
+            <select id="como-conheceu" name="como-conheceu" required aria-required="true" aria-describedby="dica-como-conheceu">
+              <option value="">Selecione uma opção</option>
+              <option value="busca">Site de busca (Google, Bing)</option>
+              <option value="redes-sociais">Redes sociais (Instagram, YouTube)</option>
+              <option value="indicacao">Indicação de amigos ou músicos</option>
+              <option value="anuncio">Anúncio online</option>
+              <option value="outro">Outro meio</option>
+            </select>
+            <div class="erro" id="erro-como-conheceu" hidden></div>
+          </div>
+
+          <div class="campo-grupo">
+            <div class="instrucao" id="dica-termos">É necessário aceitar os termos de uso e privacidade para concluir o cadastro.</div>
+            <div class="opcao-linha">
+              <input type="checkbox" id="termos" name="termos" value="aceito" required aria-required="true" aria-describedby="dica-termos">
+              <label for="termos">
+                Li e aceito os <a href="termos.html">Termos de uso</a> e a <a href="privacidade.html">Política de privacidade</a>
+                <span class="obrigatorio" aria-hidden="true">*</span><span class="sr-only"> (obrigatório)</span>
+              </label>
+            </div>
+            <div class="erro" id="erro-termos" hidden></div>
+          </div>
+        </fieldset>
+
+        <div class="honeypot">
+          <label for="website-honeypot">Não preencha este campo (verificação anti-spam)</label>
+          <input type="text" id="website-honeypot" name="website_honeypot" tabindex="-1" autocomplete="off">
+        </div>
+
+        <p>
+          <button type="submit" class="botao">Concluir cadastro</button>
+        </p>
+      </form>
+    </main>
+
+    <aside class="lateral" aria-label="Conteúdo relacionado">
+      <h2>Atendimento</h2>
+      <p>Precisa de ajuda para preencher seu cadastro? Nosso suporte atende de segunda a sexta, das 9h às 18h.</p>
+      <ul>
+        <li><a href="afinacao.html">Aprenda a afinar sua guitarra</a></li>
+        <li><a href="manutencao.html">Saiba mais sobre manutenção de instrumentos</a></li>
+        <li><a href="blog.html" target="_blank">Leia nosso blog (abre em nova aba)</a></li>
+      </ul>
+    </aside>
+  </div>
+
+  <footer id="rodape">
+    Harmonia Instrumentos Musicais &bull; CNPJ 00.000.000/0001-00 &bull;
+    <a href="termos.html">Termos de uso</a> &bull;
+    <a href="privacidade.html">Privacidade</a>
+  </footer>
+</div>
+
+<script src="../scripts/theme.js"></script>
+<script src="../scripts/form.js"></script>
+</body>
+</html>
+
