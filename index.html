@@ -3,8 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Harmonia Instrumentos Musicais — Guitarras, baterias, teclados e atendimento especializado com acessibilidade e layout responsivo.">
 <title>Harmonia Instrumentos Musicais</title>
 <link rel="stylesheet" href="styles/style.css">
+<link rel="stylesheet" href="styles/responsive.css">
 </head>
 <body>
 <a href="#conteudo" class="skip-link">Pular para o conteúdo principal</a>
@@ -25,7 +27,15 @@
   </header>
 
   <nav id="menu" aria-label="Menu Principal">
-    <ul>
+    <button type="button" id="btn-menu" class="btn-menu-toggle" aria-expanded="false" aria-controls="lista-menu">
+      <span class="btn-menu-icone" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+      <span class="btn-menu-texto">Menu</span>
+    </button>
+    <ul id="lista-menu">
       <li><a href="index.html">Início</a></li>
       <li><a href="guitarras.html">Guitarras</a></li>
       <li><a href="baterias.html">Baterias</a></li>
@@ -46,9 +56,9 @@
     <main id="conteudo" tabindex="-1">
       <h1>Loja de Instrumentos</h1>
 
-      <div class="banner-destaque" role="region" aria-label="Aviso promocional">
+      <section class="banner-destaque" aria-label="Aviso promocional">
         <strong>Frete grátis</strong> para compras acima de R$ 500 em todo o Brasil.
-      </div>
+      </section>
 
       <p>
         Bem-vindo à nossa loja. Trabalhamos com <strong>as melhores marcas</strong> do mercado e oferecemos
@@ -69,12 +79,12 @@
         <li class="cartao">
           <h4>Stratocaster HSS</h4>
           <p>R$ 4.290,00</p>
-          <button type="button" class="botao" onclick="adicionarCarrinho(101)">Adicionar ao carrinho</button>
+          <button type="button" class="botao" aria-label="Adicionar ao carrinho: Stratocaster HSS" onclick="adicionarCarrinho(101)">Adicionar ao carrinho</button>
         </li>
         <li class="cartao">
           <h4>Les Paul Standard</h4>
           <p>R$ 7.150,00</p>
-          <button type="button" class="botao" onclick="adicionarCarrinho(102)">Adicionar ao carrinho</button>
+          <button type="button" class="botao" aria-label="Adicionar ao carrinho: Les Paul Standard" onclick="adicionarCarrinho(102)">Adicionar ao carrinho</button>
         </li>
       </ul>
 
@@ -87,26 +97,27 @@
       <p>Modelos com pads de mesh e módulo de sons integrado.</p>
 
       <h2>Destaques da semana</h2>
-      <div class="carrossel" aria-roledescription="carrossel" aria-label="Instrumentos em destaque">
+      <section class="carrossel" aria-roledescription="carrossel" aria-label="Instrumentos em destaque">
         <div class="carrossel-trilho" id="trilho-carrossel">
-          <div class="slide" aria-roledescription="slide" aria-label="1 de 3">
-            <h4>Fender Telecaster Vintage</h4>
+          <div class="slide" role="group" aria-roledescription="slide" aria-label="1 de 3">
+            <h3>Fender Telecaster Vintage</h3>
             <p>O som clássico dos anos 60 com acabamento impecável.</p>
           </div>
-          <div class="slide" aria-roledescription="slide" aria-label="2 de 3">
-            <h4>Bateria Roland V-Drums</h4>
+          <div class="slide" role="group" aria-roledescription="slide" aria-label="2 de 3">
+            <h3>Bateria Roland V-Drums</h3>
             <p>Kits eletrônicos silenciosos com alta sensibilidade para estudo.</p>
           </div>
-          <div class="slide" aria-roledescription="slide" aria-label="3 de 3">
-            <h4>Teclado Yamaha P-45</h4>
+          <div class="slide" role="group" aria-roledescription="slide" aria-label="3 de 3">
+            <h3>Teclado Yamaha P-45</h3>
             <p>Toque pesado de piano acústico com teclas graduadas.</p>
           </div>
         </div>
         <div class="carrossel-botoes">
           <button type="button" class="btn-carrossel" id="btn-ant" aria-label="Slide anterior">&larr; Anterior</button>
+          <span class="carrossel-indicador" id="indicador-carrossel" aria-live="polite">1 / 3</span>
           <button type="button" class="btn-carrossel" id="btn-prox" aria-label="Próximo slide">Próximo &rarr;</button>
         </div>
-      </div>
+      </section>
 
       <h2>Categorias em destaque</h2>
 
@@ -118,39 +129,41 @@
         <li>Acessórios</li>
       </ul>
 
-      <h2>Comparativo de modelos</h2>
+      <h2 id="titulo-comparativo">Comparativo de modelos</h2>
 
-      <table>
-        <caption>Comparativo de modelos de guitarra</caption>
-        <thead>
-          <tr>
-            <th scope="col">Modelo</th>
-            <th scope="col">Captadores</th>
-            <th scope="col">Escala</th>
-            <th scope="col">Preço</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">Stratocaster HSS</th>
-            <td>2 single + 1 humbucker</td>
-            <td>648 mm</td>
-            <td>R$ 4.290,00</td>
-          </tr>
-          <tr>
-            <th scope="row">Les Paul Standard</th>
-            <td>2 humbuckers</td>
-            <td>628 mm</td>
-            <td>R$ 7.150,00</td>
-          </tr>
-          <tr>
-            <th scope="row">Telecaster Vintage</th>
-            <td>2 single coil</td>
-            <td>648 mm</td>
-            <td>R$ 3.980,00</td>
-          </tr>
-        </tbody>
-      </table>
+      <section class="tabela-responsiva" aria-labelledby="titulo-comparativo" tabindex="0">
+        <table>
+          <caption>Comparativo de modelos de guitarra</caption>
+          <thead>
+            <tr>
+              <th scope="col">Modelo</th>
+              <th scope="col">Captadores</th>
+              <th scope="col">Escala</th>
+              <th scope="col">Preço</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Stratocaster HSS</th>
+              <td>2 single + 1 humbucker</td>
+              <td>648 mm</td>
+              <td>R$ 4.290,00</td>
+            </tr>
+            <tr>
+              <th scope="row">Les Paul Standard</th>
+              <td>2 humbuckers</td>
+              <td>628 mm</td>
+              <td>R$ 7.150,00</td>
+            </tr>
+            <tr>
+              <th scope="row">Telecaster Vintage</th>
+              <td>2 single coil</td>
+              <td>648 mm</td>
+              <td>R$ 3.980,00</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
 
       <h2>Fale com um vendedor</h2>
 
@@ -179,6 +192,7 @@
 
 <script src="./scripts/theme.js"></script>
 <script src="./scripts/carousel.js"></script>
+<script src="./scripts/menu.js"></script>
 </body>
 </html>
 

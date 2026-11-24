@@ -1,0 +1,429 @@
+/*
+ * Estilos responsivos Desktop-First — Harmonia Instrumentos Musicais
+ *
+ * A base em styles/style.css define o layout completo para Desktop (> 1024px).
+ * Esta folha adapta progressivamente a interface descendo para:
+ *   1. <= 1024px: Tablet paisagem / telas médias
+ *   2. <= 860px : Tablet retrato (ex.: 768px)
+ *   3. <= 600px : Celular / Mobile (ex.: 375px - 540px)
+ *   4. <= 380px : Celulares muito compactos (320px - 380px)
+ */
+
+/* ==========================================================================
+   1. Tablet paisagem e notebooks compactos (<= 1024px)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .wrap {
+    max-width: 100%;
+  }
+
+  #topo {
+    padding: 16px 20px;
+  }
+
+  .titulo-principal {
+    font-size: 26px;
+  }
+
+  #menu,
+  #trilha {
+    padding: 10px 20px;
+  }
+
+  #miolo {
+    gap: 22px;
+    padding: 20px;
+  }
+
+  .lateral {
+    flex: 0 0 220px;
+  }
+
+  #rodape {
+    padding: 18px 20px;
+  }
+}
+
+/* ==========================================================================
+   2. Tablet retrato (<= 860px)
+   ========================================================================== */
+@media (max-width: 860px) {
+  .titulo-principal {
+    font-size: 24px;
+  }
+
+  #menu ul {
+    gap: 8px 16px;
+  }
+
+  #menu a {
+    padding: 8px 4px;
+  }
+
+  #miolo {
+    flex-direction: column;
+    gap: 24px;
+    padding: 20px;
+  }
+
+  #conteudo {
+    width: 100%;
+  }
+
+  .lateral {
+    flex: none;
+    width: 100%;
+  }
+
+  .lista-produtos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .cartao {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .cartao p {
+    margin: 4px 0 12px;
+  }
+
+  h1 {
+    font-size: 25px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  h3 {
+    font-size: 19px;
+  }
+
+  fieldset {
+    padding: 16px;
+  }
+}
+
+/* ==========================================================================
+   3. Celular / Mobile (<= 600px)
+   ========================================================================== */
+@media (max-width: 600px) {
+  #topo {
+    padding: 14px 16px;
+  }
+
+  .topo-flex {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .titulo-principal {
+    font-size: 21px;
+    line-height: 1.25;
+  }
+
+  .subtitulo {
+    font-size: 13px;
+    margin-top: 2px;
+  }
+
+  .topo-acoes {
+    width: 100%;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .btn-tema {
+    min-height: 44px;
+    padding: 8px 14px;
+    font-size: 14px;
+  }
+
+  .topo-acoes a {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Menu hambúrguer acessível no mobile */
+  #menu {
+    padding: 8px 16px;
+  }
+
+  .btn-menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    color: var(--text-inverse);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 6px;
+    padding: 8px 14px;
+    min-height: 44px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+  }
+
+  .btn-menu-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.85);
+  }
+
+  .btn-menu-toggle:focus-visible {
+    outline: 3px solid #ffbf47;
+    outline-offset: 2px;
+  }
+
+  .btn-menu-icone {
+    width: 20px;
+    height: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .btn-menu-icone span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: currentColor;
+    border-radius: 2px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .btn-menu-toggle[aria-expanded="true"] .btn-menu-icone span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+
+  .btn-menu-toggle[aria-expanded="true"] .btn-menu-icone span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .btn-menu-toggle[aria-expanded="true"] .btn-menu-icone span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+
+  #menu ul {
+    flex-direction: column;
+    gap: 0;
+    margin-top: 8px;
+  }
+
+  #menu.menu-js ul {
+    display: none;
+  }
+
+  #menu.menu-js ul.aberto {
+    display: flex;
+  }
+
+  #menu li {
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+  }
+
+  #menu a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 10px 6px;
+    font-size: 16px;
+  }
+
+  /* Breadcrumb e Conteúdo */
+  #trilha {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  #trilha a {
+    display: inline-block;
+    padding: 6px 2px;
+  }
+
+  #miolo {
+    padding: 16px;
+    gap: 20px;
+  }
+
+  h1 {
+    font-size: 22px;
+    line-height: 1.25;
+  }
+
+  h2 {
+    font-size: 19px;
+    margin: 20px 0 8px;
+  }
+
+  h3 {
+    font-size: 18px;
+    margin: 18px 0 8px;
+  }
+
+  .banner-destaque {
+    padding: 12px 14px;
+  }
+
+  /* Cartões e Botões */
+  .lista-produtos {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .cartao {
+    padding: 14px;
+  }
+
+  .cartao:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .botao {
+    width: 100%;
+    min-height: 46px;
+    padding: 12px 16px;
+    font-size: 15px;
+    text-align: center;
+  }
+
+  /* Carrossel */
+  .slide {
+    padding: 16px;
+  }
+
+  .slide h3 {
+    font-size: 17px;
+  }
+
+  .carrossel-botoes {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .btn-carrossel {
+    min-height: 44px;
+    padding: 8px 14px;
+    font-size: 14px;
+  }
+
+  /* Tabela com rolagem horizontal acessível */
+  .tabela-responsiva table {
+    min-width: 460px;
+    font-size: 13px;
+  }
+
+  th,
+  td {
+    padding: 8px 10px;
+  }
+
+  /* Formulário no Mobile */
+  fieldset {
+    padding: 14px 12px;
+    margin-bottom: 16px;
+  }
+
+  legend {
+    font-size: 15px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="tel"],
+  input[type="date"],
+  select {
+    font-size: 16px;
+    padding: 11px 12px;
+    min-height: 44px;
+  }
+
+  .opcao-linha {
+    align-items: flex-start;
+    gap: 10px;
+    padding: 6px 0;
+    min-height: 40px;
+  }
+
+  .opcao-linha input[type="radio"],
+  .opcao-linha input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+    margin-top: 1px;
+  }
+
+  .opcao-linha label {
+    font-size: 15px;
+    line-height: 1.4;
+  }
+
+  .resumo-erros,
+  .mensagem-sucesso {
+    padding: 14px;
+  }
+
+  .resumo-erros li {
+    margin-bottom: 10px;
+  }
+
+  /* Lateral e Rodapé */
+  .lateral {
+    padding: 14px;
+  }
+
+  .lateral a {
+    display: inline-block;
+    padding: 6px 0;
+  }
+
+  #rodape {
+    padding: 16px;
+    font-size: 13px;
+    line-height: 1.8;
+    text-align: center;
+  }
+
+  #rodape a {
+    display: inline-block;
+    padding: 8px 6px;
+  }
+}
+
+/* ==========================================================================
+   4. Celulares muito compactos (<= 380px)
+   ========================================================================== */
+@media (max-width: 380px) {
+  .titulo-principal {
+    font-size: 19px;
+  }
+
+  .carrossel-indicador {
+    order: -1;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2px;
+  }
+
+  .btn-carrossel {
+    flex: 1 1 0;
+    text-align: center;
+  }
+}
+
+/* ==========================================================================
+   5. Preferência por movimento reduzido
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .btn-menu-icone span {
+    transition: none;
+  }
+}
