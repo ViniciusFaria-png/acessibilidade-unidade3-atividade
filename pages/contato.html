@@ -3,8 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Cadastro de cliente e contato na Harmonia Instrumentos Musicais com formulário acessível e validação completa.">
 <title>Cadastro e Contato — Harmonia Instrumentos Musicais</title>
 <link rel="stylesheet" href="../styles/style.css">
+<link rel="stylesheet" href="../styles/responsive.css">
 </head>
 <body>
 <a href="#conteudo" class="skip-link">Pular para o conteúdo principal</a>
@@ -25,7 +27,15 @@
   </header>
 
   <nav id="menu" aria-label="Menu Principal">
-    <ul>
+    <button type="button" id="btn-menu" class="btn-menu-toggle" aria-expanded="false" aria-controls="lista-menu">
+      <span class="btn-menu-icone" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+      <span class="btn-menu-texto">Menu</span>
+    </button>
+    <ul id="lista-menu">
       <li><a href="../index.html">Início</a></li>
       <li><a href="../guitarras.html">Guitarras</a></li>
       <li><a href="../baterias.html">Baterias</a></li>
@@ -219,7 +229,7 @@
             <div class="opcao-linha">
               <input type="checkbox" id="termos" name="termos" value="aceito" required aria-required="true" aria-describedby="dica-termos">
               <label for="termos">
-                Li e aceito os <a href="termos.html">Termos de uso</a> e a <a href="privacidade.html">Política de privacidade</a>
+                Li e aceito os <a href="../termos.html">Termos de uso</a> e a <a href="../privacidade.html">Política de privacidade</a>
                 <span class="obrigatorio" aria-hidden="true">*</span><span class="sr-only"> (obrigatório)</span>
               </label>
             </div>
@@ -242,22 +252,23 @@
       <h2>Atendimento</h2>
       <p>Precisa de ajuda para preencher seu cadastro? Nosso suporte atende de segunda a sexta, das 9h às 18h.</p>
       <ul>
-        <li><a href="afinacao.html">Aprenda a afinar sua guitarra</a></li>
-        <li><a href="manutencao.html">Saiba mais sobre manutenção de instrumentos</a></li>
-        <li><a href="blog.html" target="_blank">Leia nosso blog (abre em nova aba)</a></li>
+        <li><a href="../afinacao.html">Aprenda a afinar sua guitarra</a></li>
+        <li><a href="../manutencao.html">Saiba mais sobre manutenção de instrumentos</a></li>
+        <li><a href="../blog.html" target="_blank">Leia nosso blog (abre em nova aba)</a></li>
       </ul>
     </aside>
   </div>
 
   <footer id="rodape">
     Harmonia Instrumentos Musicais &bull; CNPJ 00.000.000/0001-00 &bull;
-    <a href="termos.html">Termos de uso</a> &bull;
-    <a href="privacidade.html">Privacidade</a>
+    <a href="../termos.html">Termos de uso</a> &bull;
+    <a href="../privacidade.html">Privacidade</a>
   </footer>
 </div>
 
 <script src="../scripts/theme.js"></script>
 <script src="../scripts/form.js"></script>
+<script src="../scripts/menu.js"></script>
 </body>
 </html>
 
